@@ -6,12 +6,14 @@ export interface Register {
   email: string;
   password: string;
 }
+
 export interface Login {
   email: string;
   password: string;
 }
 
+
 export interface LoginResponse {
   user: User;
-  access_token: string;
+  accessToken: string;
 }

@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Product} from "../../core/interfaces";
+import {CartService} from "../../core/services";
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss']
 })
-export class ProductCardComponent {
-  https: any;
-  product: any = {
-    name: 'Product Name',
-    price: 100,
-    description: 'this is good product',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80',
-  };
+export class ProductCardComponent implements OnInit {
+
+  @Input() product: Product = {} as Product;
+
+  constructor(
+    private cartService: CartService
+  ) { }
+
+  ngOnInit(): void {
+  }
+
+    addToCart($event: MouseEvent) {
+    $event.stopPropagation();
+    this.cartService.addToCart({
+      productId: this.product.id,
+      quantity: 1
+    }).subscribe()
+  }
 }
-
-
