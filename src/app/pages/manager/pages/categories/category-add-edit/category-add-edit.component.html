@@ -2,6 +2,9 @@
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+    <div class="mat-error error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+      <div *ngIf="form.get('name')?.errors?.['required']">Name is required</div>
+    </div>
   </div>
   <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>

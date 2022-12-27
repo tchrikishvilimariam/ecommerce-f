@@ -9,7 +9,7 @@ import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     MainLayoutComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
     imports: [
         CommonModule,

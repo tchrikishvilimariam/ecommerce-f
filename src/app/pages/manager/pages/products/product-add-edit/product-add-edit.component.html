@@ -2,15 +2,24 @@
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+    <div class="mat-error error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+      <div *ngIf="form.get('name')?.errors?.['required']">Name is required</div>
+    </div>
   </div>
   <div class="form-group">
     <label for="description">Description</label>
     <textarea type="text" class="form-control" id="description" placeholder="Description"
               formControlName="description"></textarea>
+    <div class="mat-error error" *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+      <div *ngIf="form.get('description')?.errors?.['required']">Description is required</div>
+    </div>
   </div>
   <div class="form-group">
     <label for="image">Image url</label>
     <input type="text" class="form-control" id="image" placeholder="Image url" formControlName="image">
+    <div class="mat-error error" *ngIf="form.get('image')?.invalid && form.get('image')?.touched">
+      <div *ngIf="form.get('image')?.errors?.['required']">Image is required</div>
+    </div>
   </div>
   <div class="form-group">
     <label for="description">Category</label>
@@ -19,11 +28,17 @@
         {{category.name}}
       </option>
     </select>
+    <div class="mat-error error" *ngIf="form.get('categoryId')?.invalid && form.get('categoryId')?.touched">
+      <div *ngIf="form.get('categoryId')?.errors?.['required']">Name is required</div>
+    </div>
   </div>
 
   <div class="form-group">
     <label for="price">Price</label>
     <input type="number" class="form-control" id="price" placeholder="price" formControlName="price">
+    <div class="mat-error error" *ngIf="form.get('price')?.invalid && form.get('price')?.touched">
+      <div *ngIf="form.get('price')?.errors?.['required']">Name is required</div>
+    </div>
   </div>
   <button type="submit" class="btn btn-primary mt-3">Submit</button>
 </form>

@@ -1,5 +1,7 @@
-<div>
+<div *ngIf="cartItems.length; else empty">
   <div>
+
+    <img src="">
     <table class="table">
       <thead>
         <tr>
@@ -13,9 +15,9 @@
       <tbody>
       <tr *ngFor="let item of cartItems">
         <td>{{item.item?.name}}</td>
-        <td>{{item.item?.price}}</td>
+        <td>{{item.item?.price |currency}}</td>
         <td>{{item.quantity}}</td>
-        <td>{{item.total}}</td>
+        <td>{{item.total | currency}}</td>
         <td>
           <button class="btn btn-danger" (click)="removeItem(item)">Remove</button>
         </td>
@@ -25,8 +27,14 @@
   </div>
 
   <div>
-    <h3>Total Price: {{cartSum}}</h3>
-    <button class="btn btn-success" (click)="checkout()">Checkout</button>
+    <h3>Total Price: {{cartSum | currency}}</h3>
+    <button class="btn btn-dark" (click)="checkout()">Checkout</button>
   </div>
 </div>
 
+<ng-template #empty>
+
+  <div>
+    <h1>Cart Is Empty 🛒</h1>
+  </div>
+</ng-template>

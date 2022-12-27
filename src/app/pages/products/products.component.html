@@ -2,7 +2,8 @@
   <div class="sidebar">
     <div class="list-group">
       <a [routerLink]="['/products']"
-         class="list-group-item list-group-item-action">All</a>
+
+         class="list-group-item list-group-item-action all-categories">All</a>
       <a *ngFor="let category of categories$ | async"
          [routerLink]="['/products']"
          [queryParams]="{category: category.id}"
@@ -17,8 +18,14 @@
     <div>
       <input type="search" class="form-control" placeholder="Search" [ngModel]="search" (ngModelChange)="searchHandle($event)">
     </div>
-    <div class=" product-items">
+    <div class="product-items" *ngIf="products.length; else noProducts">
       <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
     </div>
+    <ng-template #noProducts>
+      <div class="no-product">
+        <h3 class="total">No products found 🛒 !</h3>
+      </div>
+    </ng-template>
   </div>
 </div>
+

@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
   cartCount$: Observable<number> = this.cartService.cartCount$;
   searchInput: any;
+  User: any = localStorage.getItem('user');
+  UserInfo = JSON.parse(this.User);
 
   get userIsAuthenticated() {
     return this.authService.token

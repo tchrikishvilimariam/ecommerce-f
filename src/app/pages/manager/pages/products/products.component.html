@@ -21,8 +21,9 @@
     <td>{{item?.price | currency: 'USD'}}</td>
     <td>{{item?.category?.name}}</td>
     <td>
-      <button class="btn btn-secondary mr-2" [routerLink]="['/manager/products/edit', item.id]">Edit</button>
-      <button class="btn btn-danger" (click)="deleteItem(item.id)">Remove</button>
+      <button class=" button-edit btn btn-secondary mr-2" [routerLink]="['/manager/products/edit', item.id]">Edit</button>
+
+      <button class=" button-delete btn btn-danger" (click)="deleteItem(item.id)">Remove</button>
     </td>
   </tr>
   </tbody>

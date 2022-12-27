@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService, OrderService} from "../../core/services";
 import {Cart} from "../../core/interfaces/cart";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +16,7 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -40,13 +42,8 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
-    console.log('checkout')
-
-    this.orderService.createOrder()
-      .pipe()
-      .subscribe(res => {
-        console.log(res)
-        this.getCarts()
-      })
+    this.orderService.createOrder().subscribe( () => {
+      this.router.navigate(['/orders'])
+    })
   }
 }

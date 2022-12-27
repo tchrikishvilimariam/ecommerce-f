@@ -4,25 +4,43 @@
   <div class="form-floating my-3">
     <input class="form-control" formControlName="firstName" id="firstName" placeholder="First Name">
     <label for="firstName"  >First Name</label>
+    <div class="mat-error mt-2 error" *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched">
+      <div *ngIf="form.get('firstName')?.errors?.['required']">First name is required</div>
+    </div>
   </div>
 
   <div class="form-floating my-3">
     <input  class="form-control" formControlName="lastName" id="lastName" placeholder="Last Name">
     <label for="lastName"  >Last Name</label>
+    <div class="mat-error mt-2 error" *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched">
+      <div *ngIf="form.get('lastName')?.errors?.['required']">Last name is required</div>
+    </div>
   </div>
 
 
   <div class="form-floating my-3">
     <input type="email" class="form-control" formControlName="email" id="email" placeholder="name@example.com">
     <label for="email"  >Email address</label>
+    <div class="mat-error mt-2 error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+      <div *ngIf="form.get('email')?.errors?.['required']">Email is required</div>
+      <div *ngIf="form.get('email')?.errors?.['email']">Email is invalid</div>
+    </div>
   </div>
   <div class="form-floating my-3">
     <input type="password" class="form-control" formControlName="password" id="floatingPassword" placeholder="Password">
     <label for="floatingPassword">Password</label>
+    <div class="mat-error error" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+      <div *ngIf="form.get('password')?.errors?.['required']">Last name is required</div>
+    </div>
   </div>
   <div class="form-floating my-3">
     <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPassword" placeholder="confirmPassword">
     <label for="confirmPassword">Confirm Password</label>
+    <div class="mat-error error" *ngIf="form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched">
+      <div *ngIf="form.get('confirmPassword')?.errors?.['required']">Confirm password is required</div>
+
+    </div>
+    <div class="mat-error error" *ngIf="passwordMatchError">Passwords do not match</div>
   </div>
   <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
 </form>
