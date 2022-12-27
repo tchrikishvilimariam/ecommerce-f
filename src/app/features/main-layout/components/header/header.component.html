@@ -16,14 +16,15 @@
         <li><a routerLink="/products" class="nav-link px-2 link-dark" style="font-size: 20px">Products</a></li>
       </ul>
 
-      <a routerLink="/cart" class="cart">
-        <div style="font-size: 20px">
-          Cart
-        </div>
-        <div class="cart-badge">{{cartCount$ | async}}</div>
-      </a>
+
 
       <ng-container *ngIf="userIsAuthenticated; else notAuthenticated">
+        <a routerLink="/cart" class="cart">
+          <div style="font-size: 20px">
+            Cart
+          </div>
+          <div class="cart-badge">{{cartCount$ | async}}</div>
+        </a>
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none " data-bs-toggle="dropdown"
              aria-expanded="false">
